@@ -1,8 +1,20 @@
 import start from "./modules/start.js";
+import getFormPerson from "./modules/formPerson.js";
 
 const init = (selectorApp, title) => {
   const app = document.querySelector(selectorApp);
   const { main, firstForm } = start(app, title);
+
+  firstForm.addEventListener('submit', e => {
+    e.preventDefault();
+
+    //а первая форма удаляется со страницы
+    firstForm.remove();
+
+    //создаем новые формы в зависимости от кол-ва указанных человек
+    const forms = getFormPerson(firstForm.count.value);
+    main.append(...forms);
+  });
 };
 
 init('.app', 'Выберите тур');
