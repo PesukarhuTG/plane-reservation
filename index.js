@@ -1,5 +1,6 @@
 import start from "./modules/start.js";
 import getFormPerson from "./modules/formPerson.js";
+import readyPlane from "./modules/readyPlane.js";
 
 const init = (selectorApp, title) => {
   const app = document.querySelector(selectorApp);
@@ -14,6 +15,8 @@ const init = (selectorApp, title) => {
     //создаем новые формы в зависимости от кол-ва указанных человек
     const forms = getFormPerson(firstForm.count.value);
     main.append(...forms);
+
+    readyPlane(forms, main);
   });
 };
 
