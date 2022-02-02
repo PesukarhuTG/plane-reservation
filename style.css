@@ -164,3 +164,67 @@ body {
   background-color: transparent;
   opacity: 0.7;
 }
+
+.plane {
+  margin: 20px auto;
+  max-width: 300px;
+  padding: 0;
+  border: none;
+}
+
+.choises-seat {
+  flex-basis: 300px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.cockpit {
+  height: 250px;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  border-bottom: 5px solid #d8d8d8;
+}
+
+.cockpit-confirm {
+  position: relative;
+  z-index: 3;
+  background-color: #fff;
+  opacity: 0.7;
+  font-weight: 700;
+  border: none;
+  padding: 10px 20px;
+  align-self: flex-end;
+  border: 1px solid #afafaf;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.cockpit:before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 500px;
+  width: 100%;
+  border-radius: 50%;
+  border-right: 5px solid #d8d8d8;
+  border-left: 5px solid #d8d8d8;
+  background: rgba(242, 238, 159, 0.5);
+  z-index: 1;
+}
+
+.cockpit-title {
+  font-size: 30px;
+  width: 60%;
+  margin: 80px auto 35px auto;
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 760px) {
+  .container {
+    padding: 0 10px;
+  }
+}

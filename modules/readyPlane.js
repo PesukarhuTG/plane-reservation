@@ -1,3 +1,5 @@
+import airplane from "./airplane.js";
+
 const readyPlane = (forms, main) => {
   const data = [];
 

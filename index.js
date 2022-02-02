@@ -17,7 +17,7 @@ const init = (selectorApp, title) => {
     const forms = getFormPerson(firstForm.count.value);
     main.append(...forms);
 
-    //запускаем проверку заполнения форм для дальнейшего показа замолета
+    //запускаем проверку заполнения форм для дальнейшего показа самолета
     readyPlane(forms, main);
   });
 };
