@@ -21,7 +21,11 @@ const createCockpit = (titleText) => {
 }
 
 const createExit = () => {
+  const fuselage = createElement('div', {
+    className: 'exit fuselage',
+  });
 
+  return fuselage;
 }
 
 const createAirplane = (title, scheme) => {
@@ -36,14 +40,10 @@ const createAirplane = (title, scheme) => {
 
   const cockpit = createCockpit(title);
 
-
   //создание мест из массива схемы самолета
   const elements = scheme.map(typeElem => {
     if (typeElem === 'exit') return createExit();
-
   });
-
-
 
   plane.append(cockpit, ...elements);
   choisesSeat.append(plane);
