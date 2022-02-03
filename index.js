@@ -24,7 +24,7 @@ const init = async (selectorApp, title) => {
     main.append(...forms);
 
     //запускаем проверку заполнения форм для дальнейшего показа самолета
-    readyPlane(forms, main);
+    readyPlane(forms, main, tourData);
   });
 };
 

@@ -66,7 +66,9 @@ const createSeatBlock = (n, count) => {
   return fuselage;
 }
 
-const createAirplane = (title, scheme) => {
+const createAirplane = (title, tourData) => {
+  const scheme = tourData.scheme;
+
   const choisesSeat = createElement('form', {
     className: 'choises-seat',
   });
@@ -94,10 +96,11 @@ const createAirplane = (title, scheme) => {
   return choisesSeat;
 };
 
-const airplane = (main, data) => {
+const airplane = (main, data, tourData) => {
   const title = `Выберите ${declOfNum(data.length, ['место', 'места', 'мест'])}`;
-  const scheme = ['exit', 11, 'exit', 1, 'exit', 17, 'exit']; //схема самолета
-  main.append(createAirplane(title, scheme)) //отрисовываем самолет
+  /*const scheme = ['exit', 11, 'exit', 1, 'exit', 17, 'exit'];*/
+  //схема самолета передавалась ниже вместо tourData до подключения API
+  main.append(createAirplane(title, tourData)); //отрисовываем самолет
 }
 
 export default airplane;
