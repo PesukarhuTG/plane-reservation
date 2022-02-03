@@ -8,7 +8,7 @@ const createCockpit = (titleText) => {
 
   const cockpitTitle = createElement('h1', {
     className: 'cockpit-title',
-    textContent: titleText,
+    innerHTML: titleText,
   });
 
   const cockpitButton = createElement('button', {
