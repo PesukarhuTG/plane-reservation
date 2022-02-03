@@ -1,7 +1,8 @@
-const declination = (num) => {
-  if (num === 1) return 'место';
-  if (num > 1 && num < 5) return 'места';
-  if (num > 4 && num < 7) return 'мест';
+const arr = ['место', 'места', 'мест'];
+
+const declOfNum = (n) => {
+  return n + ' ' + arr[n % 10 === 1 && n % 100 !== 11 ?
+    0 : n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20) ? 1 : 2];
 }
 
-export default declination;
+export default declOfNum;
