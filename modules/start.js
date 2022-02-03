@@ -79,7 +79,7 @@ const start = (app, title, data) => {
   app.append(h1, main);
 
   return {
-    main, firstForm
+    main, firstForm, h1
   }
 };
 

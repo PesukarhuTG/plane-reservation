@@ -6,11 +6,15 @@ import getData from "./service/getTour.js";
 const init = async (selectorApp, title) => {
   const app = document.querySelector(selectorApp);
   const data = await getData();
-  const { main, firstForm } = start(app, title, data);
+  const { main, firstForm, h1 } = start(app, title, data);
 
   //когда заполнили первую форму с кол-вом пассажиров...
   firstForm.addEventListener('submit', e => {
     e.preventDefault();
+
+    //улучшение после подключения API
+    const tourData = data.find(item => item.id === firstForm.tour.value);
+    h1.textContent = tourData.tour;
 
     //удаляем первую форму со страницы...
     firstForm.remove();
