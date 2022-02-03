@@ -1,10 +1,12 @@
 import start from "./modules/start.js";
 import getFormPerson from "./modules/formPerson.js";
 import readyPlane from "./modules/readyPlane.js";
+import getData from "./service/getTour.js";
 
-const init = (selectorApp, title) => {
+const init = async (selectorApp, title) => {
   const app = document.querySelector(selectorApp);
-  const { main, firstForm } = start(app, title);
+  const data = await getData();
+  const { main, firstForm } = start(app, title, data);
 
   //когда заполнили первую форму с кол-вом пассажиров...
   firstForm.addEventListener('submit', e => {
