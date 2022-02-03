@@ -1,5 +1,4 @@
 import createElement from "./createElement.js";
-///import declination from "./wordsDeclination.js";
 import declOfNum from "./wordsDeclination.js";
 
 const createCockpit = (titleText) => {
@@ -96,7 +95,7 @@ const createAirplane = (title, scheme) => {
 };
 
 const airplane = (main, data) => {
-  const title = `Выберите ${declOfNum(data.length)}`;
+  const title = `Выберите ${declOfNum(data.length, ['место', 'места', 'мест'])}`;
   const scheme = ['exit', 11, 'exit', 1, 'exit', 17, 'exit']; //схема самолета
   main.append(createAirplane(title, scheme)) //отрисовываем самолет
 }
