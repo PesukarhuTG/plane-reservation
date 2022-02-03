@@ -96,11 +96,45 @@ const createAirplane = (title, tourData) => {
   return choisesSeat;
 };
 
+const checkSeat = (form, data) => {
+  form.addEventListener('change', () => {
+    const formData = new FormData(form);
+    const checked = [...formData].map(([, value]) => value);
+
+    if (checked.length === data.length) {
+      [...form].forEach(item => {
+        if (item.checked === false && item.name === 'seat') {
+          item.disabled = true;
+        }
+      })
+    }
+  });
+
+  //после выбора мест дополняем наши данные выбранными местами
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const formData = new FormData(form);
+    const booking = [...formData].map(([, value]) => value);
+
+    for (let i = 0; i < data.length; i++) {
+      data[i].seat = booking[i];
+    }
+
+    console.log(data);
+  })
+
+};
+
 const airplane = (main, data, tourData) => {
   const title = `Выберите ${declOfNum(data.length, ['место', 'места', 'мест'])}`;
+
   /*const scheme = ['exit', 11, 'exit', 1, 'exit', 17, 'exit'];*/
   //схема самолета передавалась ниже вместо tourData до подключения API
-  main.append(createAirplane(title, tourData)); //отрисовываем самолет
-}
+  const choiseForm = createAirplane(title, tourData)
+
+  checkSeat(choiseForm, data);//проверка, сколько мест человек бронирует. Чтобы на схеме не щелкалось больше указанного
+
+  main.append(choiseForm); //отрисовываем самолет
+};
 
 export default airplane;
