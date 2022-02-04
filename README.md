@@ -13,5 +13,11 @@ Preview link is [here](https://pesukarhutg.github.io/plane-reservation/)
 ![plane04](https://user-images.githubusercontent.com/39487464/152377070-e909b224-19bc-43ed-bf55-e00c8e5a07a1.JPG)
 6. Add checking for booking seats<br><br>
 ![plane05](https://user-images.githubusercontent.com/39487464/152377255-bfbc9042-e0e2-47e8-ac00-7a6d72943e6c.JPG)
+7. Add save and get data from localStorage:
+- we can rewrite seat number
+- we can change seat position
+- we can see other booking seats on plane scheme<br><br>
+![plane06](https://user-images.githubusercontent.com/39487464/152549313-28c12fba-dcbc-4355-b951-9a73a2e1fa5d.JPG)
+
 
 
