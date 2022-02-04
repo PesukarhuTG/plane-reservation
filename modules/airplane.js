@@ -30,7 +30,7 @@ const createExit = () => {
   return fuselage;
 }
 
-const createSeatBlock = (n, count) => {
+const createSeatBlock = (n, count, bookingSeat) => {
   const letters = ['A', 'B', 'C', 'D', 'E', 'F'];
 
   const fuselage = createElement('ol', {
@@ -49,10 +49,12 @@ const createSeatBlock = (n, count) => {
       })
 
       const checkWrapper = createElement('label');
+      const seatValue = `${i}${letter}`;
       const check = createElement('input', {
         name: 'seat',
         type: 'checkbox',
-        value: `${i}${letter}`,
+        value: seatValue,
+        disabled: bookingSeat.includes(seatValue),
       });
 
       checkWrapper.append(check);
@@ -69,6 +71,8 @@ const createSeatBlock = (n, count) => {
 
 const createAirplane = (title, tourData) => {
   const scheme = tourData.scheme;
+  const bookingSeat = getStorage(tourData.id).map(item => item.seat);
+  console.log(bookingSeat);
 
   const choisesSeat = createElement('form', {
     className: 'choises-seat',
@@ -86,7 +90,7 @@ const createAirplane = (title, tourData) => {
   const elements = scheme.map(typeElem => {
     if (typeElem === 'exit') return createExit();
     if (typeof typeElem === 'number') {
-      const seatBlock = createSeatBlock(n, typeElem);
+      const seatBlock = createSeatBlock(n, typeElem, bookingSeat);
       n += typeElem; //кресла с 1...11, потом с 12...23
       return seatBlock;
     }
@@ -97,7 +101,7 @@ const createAirplane = (title, tourData) => {
   return choisesSeat;
 };
 
-const checkSeat = (form, data) => {
+const checkSeat = (form, data, id) => {
   form.addEventListener('change', () => {
     const formData = new FormData(form);
     const checked = [...formData].map(([, value]) => value);
@@ -121,7 +125,7 @@ const checkSeat = (form, data) => {
       data[i].seat = booking[i];
     }
 
-    setStrorage(data);
+    setStrorage(id, data);
 
     //после фиксирования данных форму скрываем
     form.remove();
@@ -141,7 +145,7 @@ const airplane = (main, data, tourData) => {
   //схема самолета передавалась ниже вместо tourData до подключения API
   const choiseForm = createAirplane(title, tourData)
 
-  checkSeat(choiseForm, data);//проверка, сколько мест человек бронирует. Чтобы на схеме не щелкалось больше указанного
+  checkSeat(choiseForm, data, tourData.id);//проверка, сколько мест человек бронирует. Чтобы на схеме не щелкалось больше указанного
 
   main.append(choiseForm); //отрисовываем самолет
 };

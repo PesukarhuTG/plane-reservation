@@ -1,13 +1,13 @@
-export const getStorage = () => {
-  if (localStorage.getItem('tour')) {
-    return JSON.parse(localStorage.getItem('tour')); //приводим к виду обычного массива
+export const getStorage = (id) => {
+  if (localStorage.getItem(`tour-${id}`)) {
+    return JSON.parse(localStorage.getItem(`tour-${id}`)); //приводим к виду обычного массива
   } else {
     return [];
   }
 };
 
-export const setStrorage = (data) => {
-  const storage = getStorage();
+export const setStrorage = (id, data) => {
+  const storage = getStorage(id);
 
   //если сохранили билет, а потом с этим же номером билета снова регистрируется человек,
   //то билет дважды НЕ добавится, а произойдет обновление места пассажира на другое
@@ -22,5 +22,5 @@ export const setStrorage = (data) => {
 
   const newBooking = [...filterBooking, ...data];
 
-  localStorage.setItem('tour', JSON.stringify(newBooking));
+  localStorage.setItem(`tour-${id}`, JSON.stringify(newBooking));
 }
