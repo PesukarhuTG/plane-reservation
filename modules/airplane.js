@@ -102,6 +102,8 @@ const createAirplane = (title, tourData) => {
 };
 
 const checkSeat = (form, data, id) => {
+  const bookingSeat = getStorage(id).map(item => item.seat);
+
   form.addEventListener('change', () => {
     const formData = new FormData(form);
     const checked = [...formData].map(([, value]) => value);
@@ -109,7 +111,13 @@ const checkSeat = (form, data, id) => {
     if (checked.length === data.length) {
       [...form].forEach(item => {
         if (item.checked === false && item.name === 'seat') {
-          item.disabled = true;
+          item.disabled = true; //выбрали место - остальные заблокировались
+        }
+      })
+    } else {
+      [...form].forEach(item => {
+        if (!bookingSeat.includes(item.value)) {
+          item.disabled = false; //передумали, сняли выделение с места - остальные разблокировались
         }
       })
     }
