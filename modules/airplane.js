@@ -72,7 +72,6 @@ const createSeatBlock = (n, count, bookingSeat) => {
 const createAirplane = (title, tourData) => {
   const scheme = tourData.scheme;
   const bookingSeat = getStorage(tourData.id).map(item => item.seat);
-  console.log(bookingSeat);
 
   const choisesSeat = createElement('form', {
     className: 'choises-seat',
@@ -140,7 +139,7 @@ const checkSeat = (form, data, id) => {
 
     document.body.innerHTML = `
       <h1 class="title">Спасибо, хорошего полёта!</h1>
-      <h2 class="title">${booking.length === 1 ? `Ваше место ${booking}` : `Ваши места ${booking}`}</h2>
+      <h2 class="title">${booking.length === 1 ? `Ваше место ${booking}` : `Ваши места ${booking.join(', ')}`}</h2>
     `;
   })
 

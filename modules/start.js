@@ -53,7 +53,7 @@ const createFirstForm = (data) => {
     id: 'count',
     name: 'count',
     type: 'number',
-    placeholder: '#',
+    placeholder: '0',
     min: '1',
     max: '6',
     required: true,
