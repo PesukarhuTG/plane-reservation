@@ -1,5 +1,6 @@
 import createElement from "./createElement.js";
 import declOfNum from "./wordsDeclination.js";
+import { setStrorage, getStorage } from "../service/storage.js";
 
 const createCockpit = (titleText) => {
   const cockpit = createElement('div', {
@@ -119,6 +120,8 @@ const checkSeat = (form, data) => {
     for (let i = 0; i < data.length; i++) {
       data[i].seat = booking[i];
     }
+
+    setStrorage(data);
 
     //после фиксирования данных форму скрываем
     form.remove();
